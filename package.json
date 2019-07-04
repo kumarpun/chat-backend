@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "build:deploy": "cross-env NODE_ENV=production webpack",
   "scripts": {
+    "dev": "nodemon server.js",
     "start": "nodemon server.js",
-    "build": "ng build",
-    "heroku-postbuild": "ng build --prod" 
+    "development": "cross-env NODE_ENV=production"
   },
   "author": "",
   "license": "ISC",
