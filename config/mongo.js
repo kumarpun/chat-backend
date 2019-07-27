@@ -16,7 +16,7 @@ const init = () => {
 
 // connect to mongo host, set retry on initial fail
 const connectMongo = () => {
-    var mongodbUri = "mongodb+srv://kumarpun:jimin@1234@cluster0-83sos.mongodb.net/chat-app?retryWrites=true&w=majority"
+    var mongodbUri = "mongodb+srv://kumarpun:jimin@1234@cluster0-83sos.mongodb.net/video?retryWrites=true&w=majority"
     var settings = {
           reconnectTries : Number.MAX_VALUE,
           autoReconnect : true,

@@ -6,13 +6,20 @@ const UserSchema = mongoose.Schema({
   username: {
     type: String,
     required: true,
-    trim: true,
     unique: true
   },
   password: {
     type: String,
     required: true
+  },
+  role: {
+    type: String,
+    enum: ['doctor', 'patient'],
+    default: 'patient'
   }
+},
+{
+  timestamps: true
 });
 
 UserSchema.statics.getUserById = function(id, callback) {

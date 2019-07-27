@@ -15,6 +15,7 @@ router.post('/register', (req, res, next) => {
         let newUser = new User({
             username: req.body.username,
             password: req.body.password,
+            role: req.body.role,
         });
 
         User.addUser(newUser, (err, user) => {
@@ -27,8 +28,9 @@ router.post('/register', (req, res, next) => {
                 response.user = {
                     id: user._id,
                     username: user.username,
+                    role: user.role,
                 };
-                console.log('user registered successfullly', user.username);
+                console.log('user registered successfullly', user.username, user.role);
                 res.json(response);
             }
         })
@@ -39,7 +41,7 @@ router.post('/authenticate', (req, res, next) => {
     let body = req.body;
     let response = { success: false };
 
-    User.authenticate(body.username.trim(), body.password.trim(), (err, user) => {
+    User.authenticate(body.username, body.password, (err, user) => {
         if (err) {
             response.msg = err.msg;
             res.json(response);
@@ -48,6 +50,7 @@ router.post('/authenticate', (req, res, next) => {
             let signData = {
                 id: user._id,
                 username: user.username,
+                role: user.role
               };
               let token = jwt.sign(signData, config.secret, {
                 expiresIn: 6048000000000000,
