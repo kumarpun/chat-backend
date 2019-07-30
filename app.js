@@ -9,6 +9,7 @@ const config = require('./config');
 // import routes
 const userRoutes = require('./routes/users');
 const messageRoutes = require('./routes/message');
+const meetingRoutes = require('./routes/meeting_routes');
 
 // initialize the app
 const app = express();
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // TODO: change to '/user' and '/message'
 app.use(`${config.root}/users`, userRoutes);
 app.use(`${config.root}/messages`, messageRoutes);
+app.use(`${config.root}/meetings`, meetingRoutes);
 
 
 
