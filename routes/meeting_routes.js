@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 const debug = require('util').debuglog('app');
 const meetModule = require('../models/meet');
 var mongoose = require('mongoose');
@@ -22,7 +23,9 @@ router.post('/book/:id', (req, res, next) => {
 
 // create a meeting
 
-router.post('/create', (req, res, next) => {
+router.post('/create', passport.authenticate("jwt", {session:false}), (req, res, next) => {
+    let response = {success: true};
+
     let { id, start, end, booked } = req.body;
 
     try {
@@ -32,6 +35,9 @@ router.post('/create', (req, res, next) => {
             booked: false
         });
         if(!data) {
+            response.success = false;
+            response.msg = "unable to create meeting";
+            res.json(response);
             throw new error();
         }
         return res.status(201).json({
@@ -53,11 +59,18 @@ router.post('/create', (req, res, next) => {
 
 // get all meetings
 
-router.get('/create', (req, res) => {
+router.get('/create', passport.authenticate("jwt", {session: false}), (req, res) => {
+    let response = {success: true};
     Meet.find({}, function(err, meet) {
-        if(err)
-        res.send(err);
-        res.json(meet);
+        if(err) {
+            response.success = false;
+            response.msg = "there was an error on getting meeting";
+            res.json(response);
+        } else {
+            response.msg = "meeting retrieved successfully";
+            response.meet = meet;
+            res.json(response);
+        }
     })
 });
 
