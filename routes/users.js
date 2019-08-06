@@ -65,17 +65,7 @@ router.post('/authenticate', (req, res, next) => {
         }
     });
 });
-// profile
-router.get(
-  '/profile',
-  passport.authenticate('jwt', { session: false }),
-  (req, res, next) => {
-    let response = { success: true };
-    response.msg = 'Profile retrieved successfuly';
-    response.user = req.user;
-    res.json(response);
-  }
-);
+
 
 // user list
 router.get('/', (req, res, next) => {
