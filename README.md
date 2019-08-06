@@ -1,0 +1,1 @@
+This is an backend for chat-application made on nodejs using express framework
