@@ -7,6 +7,12 @@ var MeetSchema = new mongoose.Schema({
     end: {
         type: String
     },
-    booked: String
+    booked: String,
+    patientID: {
+        type: String
+    },
+    doctorID: {
+        type : String
+    }
 });
 module.exports = mongoose.model('Meet', MeetSchema);
