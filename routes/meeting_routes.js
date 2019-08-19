@@ -76,6 +76,21 @@ router.get('/create', passport.authenticate("jwt", {session: false}), (req, res)
     })
 });
 
+
+// get meeting by patien id
+
+router.get('/:patientID', (req, res) => {
+   
+    let { patientID } = req.params;
+
+    Meet.findOne({'patientID': patientID}, function(err, meet) {
+        if(err)
+        res.send(err);
+        res.json(meet);
+    });
+
+});
+
 // get meetings by id
 
 router.get('/:id', (req, res, next) => {
