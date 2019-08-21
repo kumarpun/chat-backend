@@ -91,6 +91,19 @@ router.get('/:patientID', (req, res) => {
 
 });
 
+// get meeting by doctor id
+router.get('/doctor/:doctorID', (req, res) => {
+   
+    let { doctorID } = req.params;
+
+    Meet.find({'doctorID': doctorID}, function(err, meet) {
+        if(err)
+        res.send(err);
+        res.json(meet);
+    });
+
+});
+
 // get meetings by id
 
 router.get('/:id', (req, res, next) => {
