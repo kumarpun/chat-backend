@@ -6,7 +6,7 @@ const meetModule = require('../models/meet');
 var mongoose = require('mongoose');
 Meet = mongoose.model('Meet')
 
-// Book a meeting
+// Book a meeting id
 
 router.post('/book/:id', (req, res, next) => {
     console.log(req.params);
@@ -111,6 +111,21 @@ router.get('/:id', (req, res, next) => {
         if (err) return next(err);
         res.json(meet);
        })
+})
+
+router.get('/true', (req, res) => {
+    Meet.find({booked: true}, function(err, meet) {
+        if(err)
+        res.send(err);
+        res.json(meet);
+    })
+})
+router.get('/false', (req, res) => {
+    Meet.find({booked: false}, function(err, meet) {
+        if(err)
+        res.send(err);
+        res.json(meet);
+    })
 })
 
 module.exports = router;
