@@ -13,6 +13,9 @@ var MeetSchema = new mongoose.Schema({
     },
     doctorID: {
         type : String
+    },
+    generatedsessionID: {
+        type: String
     }
 });
 module.exports = mongoose.model('Meet', MeetSchema);

@@ -26,7 +26,7 @@ router.post('/book/:id', (req, res, next) => {
 router.post('/create', passport.authenticate("jwt", {session:false}), (req, res, next) => {
     let response = {success: true};
 
-    let { id, start, end, booked, patientID, doctorID  } = req.body;
+    let { id, start, end, booked, patientID, doctorID, generatedsessionID  } = req.body;
 
     try {
         let data = meetModule.create({
@@ -34,7 +34,8 @@ router.post('/create', passport.authenticate("jwt", {session:false}), (req, res,
             end: end,
             booked: false,
             patientID: patientID,
-            doctorID: doctorID
+            doctorID: doctorID,
+            generatedsessionID: generatedsessionID
         });
         if(!data) {
             response.success = false;
