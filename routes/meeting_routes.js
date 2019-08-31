@@ -77,7 +77,7 @@ router.get('/create', passport.authenticate("jwt", {session: false}), (req, res)
     })
 });
 
-
+//
 // get meeting by patien id
 
 router.get('/:patientID', (req, res) => {
