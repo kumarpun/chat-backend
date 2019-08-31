@@ -84,7 +84,7 @@ router.get('/:patientID', (req, res) => {
    
     let { patientID } = req.params;
 
-    Meet.findOne({'patientID': patientID}, function(err, meet) {
+    Meet.find({'patientID': patientID}, function(err, meet) {
         if(err)
         res.send(err);
         res.json(meet);
