@@ -7,13 +7,13 @@ const path = require('path');
 const rimraf = require('rimraf');
 
 
-router.get("/get", (req, res) => {
+router.get('/get', (req, res) => {
   res.send(
     "<h1 style='text-align: center'>Wellcome to FunOfHeuristic <br><br>😃👻😃👻😃👻😃👻😃</h1>"
   );
 });
 
-router.post("/send", (req, res) => {
+router.post('/send', (req, res) => {
   console.log("request came");
   let user = req.body;
   sendMail(user, info => {
@@ -64,7 +64,7 @@ var storage = multer.diskStorage({
 })
 var upload = multer({ storage: storage }).single('file');
 
-router.post("/file" , (req, res) => {
+router.post('/file' , (req, res) => {
 
 
     upload(req, res, function (err) {
