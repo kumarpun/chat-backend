@@ -124,7 +124,7 @@ router.get('/true', (req, res) => {
 router.get('/false', (req, res) => {
     Meet.find({booked: false}, function(err, meet) {
         if(err)
-        res.send(err);
+        res.send(err);-
         res.json(meet);
     })
 })
