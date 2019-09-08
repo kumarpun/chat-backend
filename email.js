@@ -120,30 +120,30 @@ router.post('/file' , (req, res) => {
            
       })
 
-      var uploadsDir = __dirname + '/uploads';
+//       var uploadsDir = __dirname + '/uploads';
 
-fs.readdir(uploadsDir, function(err, files) {
+// fs.readdir(uploadsDir, function(err, files) {
   
-  files.forEach(function(file, index) {
-    fs.stat(path.join(uploadsDir, file), function(err, stat) {
-      var endTime, now;
-      if (err) {
-        return console.error(err);
-      }
-      now = new Date().getTime();
-      endTime = new Date(stat.ctime).getTime() + 36000;
-      if (now > endTime) {
-        return rimraf(path.join(uploadsDir, file), function(err) {
-          if (err) {
-            return console.error(err);
-          }
-          console.log('successfully deleted');
-        });
-      }
-    });
-  })
+//   files.forEach(function(file, index) {
+//     fs.stat(path.join(uploadsDir, file), function(err, stat) {
+//       var endTime, now;
+//       if (err) {
+//         return console.error(err);
+//       }
+//       now = new Date().getTime();
+//       endTime = new Date(stat.ctime).getTime() + 36000;
+//       if (now > endTime) {
+//         return rimraf(path.join(uploadsDir, file), function(err) {
+//           if (err) {
+//             return console.error(err);
+//           }
+//           console.log('successfully deleted');
+//         });
+//       }
+//     });
+//   })
   
-});
+// });
 
 
 module.exports = router;
