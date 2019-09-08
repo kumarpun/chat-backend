@@ -1,4 +1,5 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
 const multer = require('multer');
 const nodemailer = require("nodemailer");
 const fs = require('fs');
